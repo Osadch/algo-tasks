@@ -1,0 +1,26 @@
+int main() {
+    setlocale(LC_ALL, "Ru");
+    const int N = 5; 
+    double array[N][N] = {
+        {0.30, 0.05, 0.00, 0.12, 0.87},
+        {0.24, 0.96, 0.21, 0.98, 0.01},
+        {0.90, 0.84, 0.01, 0.53, 0.77},
+        {0.18, 0.00, 0.41, 0.48, 0.93},
+        {0.02, 0.98, 0.32, 0.59, 0.61}
+    };
+
+    double minNonZero = std::numeric_limits<double>::max(); 
+    for (int i = 0; i < N; i++) {
+        if (array[i][i] > 0 && array[i][i] < minNonZero) {
+            minNonZero = array[i][i];
+        }
+    }
+    
+    if (minNonZero == std::numeric_limits<double>::max()) {
+        std::cout << "В диагонали нет ненулевых элементов.\n";
+    } else {
+        std::cout << "Минимальный ненулевой элемент диагонали: " << minNonZero << std::endl;
+    }
+
+    return 0;
+}
