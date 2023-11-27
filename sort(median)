@@ -1,0 +1,48 @@
+#include <algorithm>
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+pair<bool, double> CalcM(vector<double> el) {
+   
+    pair<bool, double> median;
+    int size = el.size();
+    if (size != 0) {
+        median.first = true;
+        sort(el.begin(), el.end());
+        if (size % 2 == 0) {
+            // четное
+            median.second = (el[size / 2] + el[(size / 2) - 1]) / 2;
+        }
+        else {
+            // нечетное
+            median.second = el[size / 2];
+        }
+    }
+    else {
+        median.first = false;
+        median.second = 0;
+    }
+    return median;
+}
+
+int main() {
+    int size;
+    cin >> size;
+
+    vector<double> samples;
+    for (int i = 0; i < size; ++i) {
+        double sample;
+        cin >> sample;
+        samples.push_back(sample);
+    }
+
+    pair<bool, double> result = CalcM(samples);
+    if (result.first) {
+        cout << result.second << endl;
+    }
+    else {
+        cout << "Vecor is empty"s << endl;
+    }
+}
