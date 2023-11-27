@@ -1,0 +1,29 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+bool Bb(string x) {
+    if (x[0] == 'B' || x[0] == 'b') {
+        return true;
+    }
+    return false;
+}
+
+/*
+bool Bb(string x) {
+    return x[0] == 'B' || x[0] == 'b';
+}
+*/
+
+int CountStartsWithB(const vector<string>& xs) {
+    // Ччисло строк, начинающихся на букву B или b
+    int count = count_if(xs.begin(), xs.end(), Bb);
+    return count;
+}
+
+int main() {
+    cout << CountStartsWithB({ "Boots"s, "cool"s, "dog"s, "big"s, "cat"s, "Barbara"s, "bites"s,"bug"s, "corn"s });
+}
