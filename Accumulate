@@ -1,0 +1,19 @@
+#include <set>
+#include <string>
+#include <numeric>
+#include <iostream>
+
+using namespace std;
+
+string WithMinus(string left, string right) {
+    return left + " -"s + right;
+}
+
+string AddWords(const string& query, const set<string>& words) {
+    return accumulate(words.begin(), words.end(), query, WithMinus);
+}
+
+
+int main() {
+    cout << AddWords("Apple juice"s, { "yes"s, "no"s }) << endl;
+}
